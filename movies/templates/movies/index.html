@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<!--To get this use ZEN coding: table.table>thead>tr>th*4-->
+
+{% block content %}
+<table class="table table-bordered table-hover">
+    <thead> <!--this specifies that this is the header of the table-->
+        <tr><!--This is the row. but sinece in header its the first row of table-->
+            <th>Title</th><!--This is the first column-->
+            <th>Genre</th><!--This is the second column-->
+            <th>Stock</th><!--This is the third column-->
+            <th>Daily Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td><a href="{% url 'movies:detail' movie.id  %}">{{ movie.title }}</a></td>
+            <td>{{ movie.genre }}</td>
+            <td>{{ movie.number_in_stock }}</td>
+            <td>{{ movie.daily_rate }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+<!--table-hover highlights where the cursor is hovering-->
